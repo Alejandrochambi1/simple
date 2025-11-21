@@ -5,7 +5,7 @@ var url = Environment.GetEnvironmentVariable("DATABASE_PUBLIC_URL");
 Console.WriteLine($"la cadena es :{url}");
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<simpleContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("simpleContext") ?? throw new InvalidOperationException("Connection string 'simpleContext' not found.")));
+    options.UseNpgsql(url));
 
 // Add services to the container.
 builder.WebHost.UseUrls("http://0.0.0.0:8080");
